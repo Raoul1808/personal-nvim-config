@@ -11,6 +11,9 @@ return {
 			highlight_git = "all",
 			highlight_modified = "all",
 		},
+		diagnostics = {
+			enable = true,
+		},
 		modified = {
 			enable = true,
 		},
