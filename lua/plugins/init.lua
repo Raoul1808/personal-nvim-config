@@ -3,5 +3,4 @@ return {
 	{"nvim-tree/nvim-web-devicons"},
 	{"olimorris/onedarkpro.nvim", priority = 1000},
 	{"wakatime/vim-wakatime", lazy = false},
-	{"42Paris/42header"},
 }
