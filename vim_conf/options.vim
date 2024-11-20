@@ -11,4 +11,6 @@ set noruler
 set laststatus=0
 set noshowcmd
 
+tnoremap <esc> <C-\><C-n>
+
 silent! colorscheme onedark
