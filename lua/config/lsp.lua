@@ -1,10 +1,12 @@
-local lsp_defaults = require('lspconfig').util.default_config
+local lspconfig = require('lspconfig')
+local lsp_defaults = lspconfig.util.default_config
 
-lsp_defaults.capabilities = vim.tbl_deep_extend(
+local capabilities = vim.tbl_deep_extend(
 	'force',
 	lsp_defaults.capabilities,
 	require('cmp_nvim_lsp').default_capabilities()
 )
+lsp_defaults.capabilities = capabilities
 
 vim.api.nvim_create_autocmd('LspAttach', {
 	desc = 'LSP actions',
@@ -28,12 +30,8 @@ require('mason-lspconfig').setup({
 	ensure_installed = {"clangd", "lua_ls"},
 	handlers = {
 		function(server_name)
-			require('lspconfig')[server_name].setup({})
-		end,
-
-		clangd = function()
-			require('lspconfig').clangd.setup({
-				single_file_support = false,
+			require('lspconfig')[server_name].setup({
+				capabilities = capabilities,
 			})
 		end,
 	}
