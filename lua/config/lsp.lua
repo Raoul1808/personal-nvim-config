@@ -26,23 +26,42 @@ vim.api.nvim_create_autocmd('LspAttach', {
 	end,
 })
 
-require('mason-lspconfig').setup({
-	ensure_installed = {"clangd", "lua_ls", "wgsl_analyzer"},
-	handlers = {
-		function(server_name)
-			require('lspconfig')[server_name].setup({
-				capabilities = capabilities,
-			})
-		end,
-	}
-})
-
-require('lspconfig').rust_analyzer.setup({
-	settings = {
-		['rust-analyzer'] = {
-			checkOnSave = {
-				command = "clippy",
+vim.g.rustaceanvim = function()
+	return {
+		server = {
+			default_settings = {
+				["rust-analyzer"] = {
+					cargo = {
+						allFeatures = true,
+					},
+					checkOnSave = {
+						allFeatures = true,
+						command = "clippy",
+						extraArgs = { "--no-deps" },
+					},
+					procMacro = {
+						enable = true,
+						ignored = {
+							["async-trait"] = { "async-trait" },
+							["napi-derive"] = { "napi" },
+							["async-recursion"] = { "async_recursion" },
+						},
+					},
+				}
 			},
 		},
-	},
+	}
+end
+
+require('mason-lspconfig').setup_handlers({
+	['rust_analyzer'] = function() end,
+	function(server_name)
+		require('lspconfig')[server_name].setup({
+			capabilities = capabilities,
+		})
+	end,
+})
+
+require('mason-lspconfig').setup({
+	ensure_installed = {"clangd", "lua_ls", "wgsl_analyzer"},
 })
