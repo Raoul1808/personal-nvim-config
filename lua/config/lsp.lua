@@ -27,7 +27,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 require('mason-lspconfig').setup({
-	ensure_installed = {"clangd", "lua_ls", "rust_analyzer", "wgsl_analyzer"},
+	ensure_installed = {"clangd", "lua_ls", "wgsl_analyzer"},
 	handlers = {
 		function(server_name)
 			require('lspconfig')[server_name].setup({
