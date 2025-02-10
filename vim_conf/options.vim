@@ -18,4 +18,6 @@ augroup FormatAutoGroup
 	autocmd BufWritePost * FormatWrite
 augroup END
 
+au BufNewFile,BufRead *.wgsl set filetpye=wgsl
+
 silent! colorscheme onedark
