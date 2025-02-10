@@ -27,7 +27,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 require('mason-lspconfig').setup({
-	ensure_installed = {"clangd", "lua_ls"},
+	ensure_installed = {"clangd", "lua_ls", "rust_analyzer", "wgsl_analyzer"},
 	handlers = {
 		function(server_name)
 			require('lspconfig')[server_name].setup({
@@ -35,4 +35,14 @@ require('mason-lspconfig').setup({
 			})
 		end,
 	}
+})
+
+require('lspconfig').rust_analyzer.setup({
+	settings = {
+		['rust-analyzer'] = {
+			checkOnSave = {
+				command = "clippy",
+			},
+		},
+	},
 })

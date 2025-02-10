@@ -13,4 +13,9 @@ set noshowcmd
 
 tnoremap <esc> <C-\><C-n>
 
+augroup FormatAutoGroup
+	autocmd!
+	autocmd BufWritePost * FormatWrite
+augroup END
+
 silent! colorscheme onedark
