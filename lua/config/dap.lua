@@ -30,12 +30,12 @@ dap.configurations.c = dap.configurations.cpp
 
 local open_dapui = function()
 	dapui.open();
-	vim.cmd("NvimTreeFresh")
+	vim.cmd("NvimTreeRefresh")
 end
 
 local close_dapui = function()
 	dapui.close();
-	vim.cmd("NvimTreeFresh")
+	vim.cmd("NvimTreeRefresh")
 end
 
 vim.api.nvim_create_user_command(
