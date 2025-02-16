@@ -33,9 +33,9 @@ return {
 	},
 	{
 		"williamboman/mason-lspconfig.nvim",
-		requires = {
+		dependencies = {
 			"williamboman/mason.nvim",
-			"neovim/nvim-lspconfig.nvim",
+			"neovim/nvim-lspconfig",
 		},
 		config = function()
 			require('config.lsp')
