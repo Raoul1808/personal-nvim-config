@@ -26,14 +26,19 @@ return {
 		event = {'BufReadPre', 'BufNewFile'},
 		dependencies = {
 			{"hrsh7th/cmp-nvim-lsp"},
-			{"williamboman/mason.nvim"},
-			{"williamboman/mason-lspconfig.nvim"},
 		},
 		init = function()
 			vim.opt.signcolumn = 'yes'
 		end,
+	},
+	{
+		"williamboman/mason-lspconfig.nvim",
+		requires = {
+			"williamboman/mason.nvim",
+			"neovim/nvim-lspconfig.nvim",
+		},
 		config = function()
 			require('config.lsp')
 		end,
-	},
+	}
 }
