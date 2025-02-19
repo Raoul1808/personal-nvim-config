@@ -8,6 +8,7 @@ set colorcolumn=81
 let s:hidden_all = 0
 set laststatus=3
 set noruler
+set cursorline
 
 tnoremap <esc> <C-\><C-n>
 

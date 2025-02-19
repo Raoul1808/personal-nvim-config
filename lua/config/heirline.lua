@@ -20,7 +20,7 @@ local function setup_colors()
 		git_del = utils.get_highlight("diffRemoved").fg,
 		git_add = utils.get_highlight("diffAdded").fg,
 		git_change = utils.get_highlight("diffChanged").fg,
-		status_bg = "#1c1f2b",
+		status_bg = utils.get_highlight("CursorLine").bg,
 	}
 end
 
@@ -317,7 +317,6 @@ local Scrollbar = {
 
 local Ruler = {
 	provider = "%7(%l/%3L%):%2v %P",
-	Scrollbar,
 }
 
 local StatusLine = {
@@ -326,14 +325,8 @@ local StatusLine = {
 	Align,
 	Diagnostics,
 	Align,
-	LSPActive, Space, FileType, Space, Ruler,
+	LSPActive, Space, FileType, Space, Ruler, Space, Scrollbar,
 }
-
-local WinBar = {}
-
-local TabLine = {}
-
-local StatusColumn = {}
 
 require("heirline").setup({
 	statusline = StatusLine,
