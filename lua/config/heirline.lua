@@ -240,13 +240,21 @@ local Git = {
 
 local LSPActive = {
 	condition = conditions.lsp_attached,
+	on_click = {
+		callback = function()
+			vim.defer_fn(function()
+				vim.cmd("LspInfo")
+			end, 100)
+		end,
+		name = "heirline_LSP",
+	},
 	update = {
 		"LspAttach",
 		"LspDetach",
 	},
 	provider = function()
 		local names = {}
-		for i, server in pairs(vim.lsp.get_clients({ bufnr = 0})) do
+		for _, server in pairs(vim.lsp.get_clients({ bufnr = 0})) do
 			table.insert(names, server.name)
 		end
 		return " [" .. table.concat(names, " ") .. "]"
@@ -257,6 +265,12 @@ local LSPActive = {
 local Diagnostics = {
 	condition = conditions.has_diagnostics,
 
+	on_click = {
+		callback = function()
+			require("trouble").toggle({ mode = "diagnostics" })
+		end,
+		name = "heirline_diagnostics",
+	},
 	static = {
         error_icon = vim.fn.sign_getdefined("UndeprecatedizedDiagnosticSignError")[1].text,
         warn_icon = vim.fn.sign_getdefined("UndeprecatedizedDiagnosticSignWarn")[1].text,
