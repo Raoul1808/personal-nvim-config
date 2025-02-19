@@ -3,6 +3,7 @@ return {
 		"williamboman/mason.nvim",
 		lazy = false,
 		opts = {},
+		commit = "ce1682f4098c7340343292a0c0ceafdd9ad63131",
 	},
 	{
 		"L3MON4D3/LuaSnip",
