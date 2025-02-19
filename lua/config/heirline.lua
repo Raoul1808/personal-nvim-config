@@ -342,8 +342,22 @@ local StatusLine = {
 	LSPActive, Space, FileType, Space, Ruler, Space, Scrollbar,
 }
 
+local WinBar = {
+	fallthrough = false,
+	{
+		condition = function()
+			return not conditions.is_active()
+		end,
+		utils.surround({ " ", " " }, "bright_bg", { hl = { fg = "gray", force = true }, FileNameBlock }),
+	},
+	{
+		utils.surround({ " ", " " }, "bright_bg", FileNameBlock),
+	},
+}
+
 require("heirline").setup({
 	statusline = StatusLine,
+	winbar = WinBar,
 	opts = {
 		colors = setup_colors,
 	}
