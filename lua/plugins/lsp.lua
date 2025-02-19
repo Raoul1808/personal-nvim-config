@@ -41,5 +41,25 @@ return {
 		config = function()
 			require('config.lsp')
 		end,
+	},
+	{
+		"rachartier/tiny-inline-diagnostic.nvim",
+		event = "VeryLazy",
+		priority = 1000,
+		config = function()
+			require('tiny-inline-diagnostic').setup({
+				preset = "amongus",
+				options = {
+					throttle = 0,
+					show_source = true,
+					multilines = {
+						enabled = true,
+						always_show = false,
+					},
+					enable_on_insert = true,
+					enable_on_select = true,
+				}
+			})
+		end,
 	}
 }

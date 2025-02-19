@@ -11,6 +11,7 @@ vim.diagnostic.config({
 			[vim.diagnostic.severity.WARN] = signs.Warn,
 			[vim.diagnostic.severity.HINT] = signs.Hint,
 			[vim.diagnostic.severity.INFO] = signs.Info,
-		}
-	}
+		},
+	},
+	virtual_text = false,
 })
