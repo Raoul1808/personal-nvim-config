@@ -21,6 +21,9 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
+-- Load signs
+require('config.signs')
+
 -- Setup lazy.nvim
 require("lazy").setup({
   spec = {
