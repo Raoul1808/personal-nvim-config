@@ -12,11 +12,6 @@ set cursorline
 
 tnoremap <esc> <C-\><C-n>
 
-augroup FormatAutoGroup
-	autocmd!
-	autocmd BufWritePost * FormatWrite
-augroup END
-
 au BufNewFile,BufRead *.wgsl set filetpye=wgsl
 au BufWritePost * lua require("lint").try_lint()
 
