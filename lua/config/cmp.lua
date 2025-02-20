@@ -1,6 +1,7 @@
 local cmp = require("cmp")
 local types = require("cmp.types")
 local luasnip = require("luasnip")
+local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 require("config.cmp_colors")
 
 cmp.setup({
@@ -90,3 +91,22 @@ cmp.setup({
 		end,
 	},
 })
+
+local handlers = require("nvim-autopairs.completion.handlers")
+
+cmp.event:on(
+	"confirm_done",
+	cmp_autopairs.on_confirm_done({
+		filetypes = {
+			["*"] = {
+				["("] = {
+					kind = {
+						cmp.lsp.CompletionItemKind.Function,
+						cmp.lsp.CompletionItemKind.Method,
+					},
+					handler = handlers[""],
+				}
+			}
+		}
+	})
+)

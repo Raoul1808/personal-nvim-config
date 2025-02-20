@@ -15,6 +15,7 @@ return {
 			"L3MON4D3/LuaSnip",
 			"hrsh7th/nvim-cmp",
 			"onsails/lspkind.nvim",
+			"windwp/nvim-autopairs",
 		},
 		event = "InsertEnter",
 		config = function()
@@ -69,5 +70,6 @@ return {
 				}
 			})
 		end,
-	}
+	},
+	{"mfussenegger/nvim-lint"},
 }

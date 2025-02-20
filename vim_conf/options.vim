@@ -18,6 +18,7 @@ augroup FormatAutoGroup
 augroup END
 
 au BufNewFile,BufRead *.wgsl set filetpye=wgsl
+au BufWritePost * lua require("lint").try_lint()
 
 " bufferline go to buffer
 nnoremap <silent><leader>1 <Cmd>BufferLineGoToBuffer 1<CR>
