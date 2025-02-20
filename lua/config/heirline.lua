@@ -279,10 +279,10 @@ local Diagnostics = {
 	},
 
 	init = function(self)
-		self.errors = #vim.diagnostic.get(0, { severity = vim.diagnostic.ERROR })
-		self.warnings = #vim.diagnostic.get(0, { severity = vim.diagnostic.WARN })
-		self.hints = #vim.diagnostic.get(0, { severity = vim.diagnostic.HINT })
-		self.infos = #vim.diagnostic.get(0, { severity = vim.diagnostic.INFO })
+		self.errors = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR })
+		self.warnings = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.WARN })
+		self.hints = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.HINT })
+		self.info = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.INFO })
 	end,
 
 	update = {
@@ -304,7 +304,7 @@ local Diagnostics = {
 	},
 	{
 		provider = function(self)
-			return self.infos > 0 and (self.info_icon .. self.infos .. " ")
+			return self.info > 0 and (self.info_icon .. self.info .. " ")
 		end,
 		hl = { fg = "diag_info" },
 	},
@@ -342,22 +342,8 @@ local StatusLine = {
 	LSPActive, Space, FileType, Space, Ruler, Space, Scrollbar,
 }
 
-local WinBar = {
-	fallthrough = false,
-	{
-		condition = function()
-			return not conditions.is_active()
-		end,
-		utils.surround({ " ", " " }, "bright_bg", { hl = { fg = "gray", force = true }, FileNameBlock }),
-	},
-	{
-		utils.surround({ " ", " " }, "bright_bg", FileNameBlock),
-	},
-}
-
 require("heirline").setup({
 	statusline = StatusLine,
-	winbar = WinBar,
 	opts = {
 		colors = setup_colors,
 	}
