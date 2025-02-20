@@ -35,4 +35,10 @@ nnoremap <silent><leader>$ <Cmd>BufferLineGoToBuffer -1<CR>
 nnoremap <silent>[b :BufferLineCycleNext<CR>
 nnoremap <silent>b] :BufferLineCyclePrev<CR>
 
+" Telescope find files
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
 silent! colorscheme onedark
