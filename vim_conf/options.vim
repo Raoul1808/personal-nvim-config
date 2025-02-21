@@ -5,6 +5,8 @@ set tabstop=4
 set termguicolors
 set colorcolumn=81
 
+let g:c_syntax_for_h = 1
+
 let s:hidden_all = 0
 set laststatus=3
 set noruler

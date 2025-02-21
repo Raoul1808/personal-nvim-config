@@ -1,10 +1,25 @@
+local formatting_disabled_languages = { "c" }
+local function has_value(tab, val)
+	for _, value in ipairs(tab) do
+		if value == val then
+			return true
+		end
+	end
+	return false
+end
+
 return {
 	"stevearc/conform.nvim",
 	opts = {
-		format_on_save = {
-			timeout_ms = 500,
-			lsp_format = "fallback",
-		},
+		format_on_save = function(bufnr)
+			if has_value(formatting_disabled_languages, vim.bo[bufnr].filetype) then
+				return
+			end
+			return {
+				timeout_ms = 500,
+				lsp_format = "fallback",
+			}
+		end,
 		formatters_by_ft = {
 			rust = { "rustfmt" },
 		},
