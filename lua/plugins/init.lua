@@ -1,6 +1,15 @@
 return {
-	{"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"},
-	{"nvim-tree/nvim-web-devicons"},
+	{
+		"nvim-treesitter/nvim-treesitter",
+		run = ":TSUpdate",
+		config = function()
+			require("nvim-treesitter.configs").setup({
+				sync_install = true,
+				auto_install = true,
+			})
+		end,
+	},
+	{ "nvim-tree/nvim-web-devicons" },
 	{
 		"navarasu/onedark.nvim",
 		priority = 1000,
@@ -10,7 +19,10 @@ return {
 			})
 		end,
 	},
-	{"wakatime/vim-wakatime", lazy = false},
+	{
+		"wakatime/vim-wakatime",
+		lazy = false,
+	},
 	{
 		"folke/which-key.nvim",
 		event = "VeryLazy",
