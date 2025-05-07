@@ -1,9 +1,8 @@
 return {
 	{
-		"williamboman/mason.nvim",
+		"mason-org/mason.nvim",
 		lazy = false,
 		opts = {},
-		commit = "ce1682f4098c7340343292a0c0ceafdd9ad63131",
 	},
 	{
 		"L3MON4D3/LuaSnip",
@@ -24,10 +23,10 @@ return {
 	},
 	{
 		"neovim/nvim-lspconfig",
-		cmd = {'LspInfo', 'LspInstall', 'LspStart'},
-		event = {'BufReadPre', 'BufNewFile'},
+		cmd = { 'LspInfo', 'LspInstall', 'LspStart' },
+		event = { 'BufReadPre', 'BufNewFile' },
 		dependencies = {
-			{"hrsh7th/cmp-nvim-lsp"},
+			{ "hrsh7th/cmp-nvim-lsp" },
 			{
 				"SmiteshP/nvim-navbuddy",
 				dependencies = {
@@ -42,7 +41,7 @@ return {
 		end,
 	},
 	{
-		"williamboman/mason-lspconfig.nvim",
+		"mason-org/mason-lspconfig.nvim",
 		dependencies = {
 			"williamboman/mason.nvim",
 			"neovim/nvim-lspconfig",
@@ -71,5 +70,5 @@ return {
 			})
 		end,
 	},
-	{"mfussenegger/nvim-lint"},
+	{ "mfussenegger/nvim-lint" },
 }

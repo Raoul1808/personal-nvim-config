@@ -53,15 +53,6 @@ vim.g.rustaceanvim = function()
 	}
 end
 
-require('mason-lspconfig').setup_handlers({
-	['rust_analyzer'] = function() end,
-	function(server_name)
-		require('lspconfig')[server_name].setup({
-			capabilities = capabilities,
-		})
-	end,
-})
-
 require('mason-lspconfig').setup({
 	ensure_installed = {"clangd", "lua_ls", "wgsl_analyzer"},
 })
