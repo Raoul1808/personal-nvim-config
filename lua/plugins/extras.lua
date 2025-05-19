@@ -13,8 +13,5 @@ return {
 		opts = {
 			scroll = { enabled = true },
 		},
-		keys = {
-			{ "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer" },
-		},
 	},
 }
