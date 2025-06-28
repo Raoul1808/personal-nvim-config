@@ -73,22 +73,22 @@ local ViMode = {
 		mode_colors = {
 			n = "red",
 			i = "green",
-            v = "cyan",
-            V =  "cyan",
-            ["\22"] =  "cyan",
-            c =  "orange",
-            s =  "purple",
-            S =  "purple",
-            ["\19"] =  "purple",
-            R =  "orange",
-            r =  "orange",
-            ["!"] =  "red",
-            t =  "red",
+			v = "cyan",
+			V = "cyan",
+			["\22"] = "cyan",
+			c = "orange",
+			s = "purple",
+			S = "purple",
+			["\19"] = "purple",
+			R = "orange",
+			r = "orange",
+			["!"] = "red",
+			t = "red",
 		},
 	},
 	{
 		provider = function(self)
-			return "  "..self.mode_names[self.mode].." "
+			return "  " .. self.mode_names[self.mode] .. " "
 		end,
 		hl = function(self)
 			local mode = self.mode:sub(1, 1)
@@ -254,7 +254,7 @@ local LSPActive = {
 	},
 	provider = function()
 		local names = {}
-		for _, server in pairs(vim.lsp.get_clients({ bufnr = 0})) do
+		for _, server in pairs(vim.lsp.get_clients({ bufnr = 0 })) do
 			table.insert(names, server.name)
 		end
 		return " [" .. table.concat(names, " ") .. "]"
@@ -272,10 +272,10 @@ local Diagnostics = {
 		name = "heirline_diagnostics",
 	},
 	static = {
-        error_icon = vim.fn.sign_getdefined("UndeprecatedizedDiagnosticSignError")[1].text,
-        warn_icon = vim.fn.sign_getdefined("UndeprecatedizedDiagnosticSignWarn")[1].text,
-        info_icon = vim.fn.sign_getdefined("UndeprecatedizedDiagnosticSignInfo")[1].text,
-        hint_icon = vim.fn.sign_getdefined("UndeprecatedizedDiagnosticSignHint")[1].text,
+		error_icon = vim.fn.sign_getdefined("UndeprecatedizedDiagnosticSignError")[1].text,
+		warn_icon = vim.fn.sign_getdefined("UndeprecatedizedDiagnosticSignWarn")[1].text,
+		info_icon = vim.fn.sign_getdefined("UndeprecatedizedDiagnosticSignInfo")[1].text,
+		hint_icon = vim.fn.sign_getdefined("UndeprecatedizedDiagnosticSignHint")[1].text,
 	},
 
 	init = function(self)
@@ -335,17 +335,48 @@ local Ruler = {
 
 local StatusLine = {
 	hl = { bg = "status_bg" },
-	ViMode, Space, WorkDir, FileNameBlock, Space, Git,
+	ViMode,
+	Space,
+	WorkDir,
+	FileNameBlock,
+	Space,
+	Git,
 	Align,
 	Diagnostics,
 	Align,
-	LSPActive, Space, FileType, Space, Ruler, Space, Scrollbar,
+	LSPActive,
+	Space,
+	FileType,
+	Space,
+	Ruler,
+	Space,
+	Scrollbar,
+}
+
+local NavicDisplay = {
+	hl = { bg = "status_bg" },
+	provider = function()
+		return require('nvim-navic').get_location()
+	end,
+}
+
+local WinBar = {
+	hl = { bg = "status_bg" },
+	NavicDisplay,
+	Align,
 }
 
 require("heirline").setup({
 	statusline = StatusLine,
+	winbar = WinBar,
 	opts = {
 		colors = setup_colors,
+		disable_winbar_cb = function(args)
+			return conditions.buffer_matches({
+				buftype = { "nofile", "prompt", "help", "quickfix" },
+				filetype = { "^git.*", "fugitive", "Trouble", "dashboard" },
+			}, args.buf)
+		end,
 	}
 })
 

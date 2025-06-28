@@ -30,7 +30,13 @@ return {
 			{
 				"SmiteshP/nvim-navbuddy",
 				dependencies = {
-					"SmiteshP/nvim-navic",
+					{
+						"SmiteshP/nvim-navic",
+						opts = {
+							lsp = { auto_attach = true },
+							highlight = true,
+						},
+					},
 					"MunifTanjim/nui.nvim",
 				},
 				opts = { lsp = { auto_attach = true } },
