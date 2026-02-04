@@ -5,5 +5,6 @@ vim.o.shiftwidth = 4
 vim.o.tabstop = 4
 vim.o.smarttab = true
 vim.o.expandtab = true
+vim.o.signcolumn = "yes"
 
 vim.cmd.colorscheme "catppuccin-macchiato"
