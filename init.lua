@@ -5,3 +5,4 @@ vim.opt.termguicolors = true
 
 require("config.lazy")
 require("config.opts")
+require("config.keymaps")
