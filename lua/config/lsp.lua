@@ -1,7 +1,7 @@
 require("mason").setup({})
 require("mason-lspconfig").setup({
     automatic_enable = {
-        exclude = { "rust_analyzer" },
+        exclude = { "rust-analyzer" },
     },
 })
 
@@ -16,5 +16,3 @@ vim.diagnostic.config({
         },
     },
 })
-
-vim.lsp.enable("rust_analyzer")
