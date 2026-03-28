@@ -15,5 +15,15 @@ return {
                 hover = true,
             },
         },
+        keys = function()
+            local crates = require('crates')
+            return {
+                {
+                    "<leader>cf",
+                    crates.show_features_popup,
+                    desc = "Toggle crate features",
+                },
+            }
+        end,
     },
 }
