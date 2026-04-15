@@ -1,8 +1,8 @@
 local gh = require("util").gh
 
 vim.pack.add({
-	gh("nvim-mini/mini.icons"),
-	gh("stevearc/oil.nvim"),
+    gh("nvim-mini/mini.icons"),
+    gh("stevearc/oil.nvim"),
 })
 
 require("oil").setup()
